@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@Html.Action("PartialHead", "AdminLayout")
+<body>
+
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        @Html.Action("PartialNavbar", "AdminLayout")
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+
+            @Html.Action("PartialMenu", "Adminlayout")
+
+            <!-- partial -->
+            <!-- main-panel ends -->
+            <div id="content" class="p-4 p-md-5 pt-5">@RenderBody()</div>
+        </div>
+        <!-- page-body-wrapper ends -->
+        
+    </div>
+    @Html.Action("PartialScript", "AdminLayout")
+</body>
+
+</html>
+
