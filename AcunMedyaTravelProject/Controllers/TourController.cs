@@ -8,6 +8,7 @@ using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class TourController : Controller
     {
         // GET: Tour
@@ -15,7 +16,7 @@ namespace AcunMedyaTravelProject.Controllers
         public ActionResult Index()
         {
             var values = db.Tours.ToList();
-            return View();
+            return View(values);
         }
         public ActionResult DeleteGuides(int id)
         {

@@ -135,9 +135,11 @@
     <Compile Include="Context\AcunmedyaDbContext.cs" />
     <Compile Include="Controllers\AcunMedyaDbContext.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DestinationController.cs" />
     <Compile Include="Controllers\GuideController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
@@ -186,6 +188,14 @@
     <Compile Include="Migrations\202504212255484_ServicesUpdate.cs" />
     <Compile Include="Migrations\202504212255484_ServicesUpdate.Designer.cs">
       <DependentUpon>202504212255484_ServicesUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504220948009_migAdmin.cs" />
+    <Compile Include="Migrations\202504220948009_migAdmin.Designer.cs">
+      <DependentUpon>202504220948009_migAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504232351109_guide.cs" />
+    <Compile Include="Migrations\202504232351109_guide.Designer.cs">
+      <DependentUpon>202504232351109_guide.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1072,16 +1082,18 @@
     <Content Include="Views\AdminLayout\PartialScript.cshtml" />
     <Content Include="Views\AdminLayout\PartialNavbar.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Guide\Index.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Testimonial\Index.cshtml" />
+    <Content Include="Views\Tour\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Guide\" />
-    <Folder Include="Views\Partner\" />
+    <Folder Include="Views\Categories\" />
     <Folder Include="Views\Services\" />
-    <Folder Include="Views\Slider\" />
-    <Folder Include="Views\Testimonial\" />
-    <Folder Include="Views\Tour\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -1134,6 +1146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504212255484_ServicesUpdate.resx">
       <DependentUpon>202504212255484_ServicesUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504220948009_migAdmin.resx">
+      <DependentUpon>202504220948009_migAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504232351109_guide.resx">
+      <DependentUpon>202504232351109_guide.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

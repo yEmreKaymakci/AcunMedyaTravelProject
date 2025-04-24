@@ -4,33 +4,11 @@
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-<style>
-    .table-wrapper {
-        margin: 20px auto;
-        width: 95%;
-    }
+<h2>Konumlar Sayfası</h2>
 
-    .my-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-        .my-table th, .my-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-    .modern-title {
-        text-align: center;
-    }
-</style>
-
-
-<h2 class="modern-title">Konumlar</h2>
-
-<div class="table-wrapper">
-    <table class="my-table">
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>DestinationID</th>
@@ -61,7 +39,7 @@
         </tbody>
 
     </table>
-    <a href="" class="btn btn-success">Ekle</a>
+    <a href="/Destination/CreateDestinations" class="btn btn-success">Ekle</a>
 </div>
 
 

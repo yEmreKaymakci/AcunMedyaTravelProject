@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AcunMedyaTravelProject.Context;
 using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class ServiceController : Controller
     {
         // GET: Services
@@ -52,6 +54,12 @@ namespace AcunMedyaTravelProject.Controllers
             values.ImageUrl = model.ImageUrl;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return View();
         }
     }
 }

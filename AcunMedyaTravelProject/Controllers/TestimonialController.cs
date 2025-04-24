@@ -8,6 +8,7 @@ using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class TestimonialController : Controller
     {
         // GET: Testimonial
@@ -15,7 +16,7 @@ namespace AcunMedyaTravelProject.Controllers
         public ActionResult Index()
         {
             var values = db.Testimonials.ToList();
-            return View();
+            return View(values);
         }
         public ActionResult DeleteTestimonials(int id)
         {

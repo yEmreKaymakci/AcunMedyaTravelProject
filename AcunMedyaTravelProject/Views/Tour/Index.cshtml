@@ -1,0 +1,51 @@
+﻿@model List<AcunMedyaTravelProject.Entities.Tour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Turlar Sayfası</h2>
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>TurID</th>
+                <th>Başlık</th>
+                <th>Açıklama1</th>
+                <th>Açıklama2</th>
+                <th>Resim Linki</th>
+                <th>İkon1</th>
+                <th>İkon2</th>
+                <th>İkon3</th>
+                <th>Beğeni</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TourID</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description1</td>
+                    <td>@item.Description2</td>
+                    <td><img src="@item.ImageUrl" style="width:50px;height:50px" /></td>
+                    <td>@item.Icon1</td>
+                    <td>@item.Icon2</td>
+                    <td>@item.Icon3</td>
+                    <td>@item.Like</td>
+                    <td><a href="/Tour/UpdateTours/@item.TourID" class="btn btn-success">Güncelle</a></td>
+                    <td><a href="/Tour/DeleteTours/@item.TourID" class="btn btn-danger">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <br /><br />
+    <a href="/Tour/CreateTours/" class="btn btn-dribbble">Ekle</a>
+</div>

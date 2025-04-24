@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq; 
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AcunMedyaTravelProject.Context;
 using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class DestinationController : Controller
     {
         // GET: Destination
@@ -54,5 +56,6 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+     
     }
 }

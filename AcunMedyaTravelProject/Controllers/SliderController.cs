@@ -8,6 +8,7 @@ using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class SliderController : Controller
     {
         // GET: Slider
@@ -15,9 +16,9 @@ namespace AcunMedyaTravelProject.Controllers
         public ActionResult Index()
         {
             var values = db.Sliders.ToList();
-            return View();
+            return View(values);
         }
-        public ActionResult DeleteGuides(int id)
+        public ActionResult DeleteSliders(int id)
         {
             var values = db.Sliders.Find(id);
             db.Sliders.Remove(values);

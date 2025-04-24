@@ -8,6 +8,7 @@ using AcunMedyaTravelProject.Entities;
 
 namespace AcunMedyaTravelProject.Controllers
 {
+    [Authorize]
     public class PartnerController : Controller
     {
         // GET: Partner
@@ -15,7 +16,7 @@ namespace AcunMedyaTravelProject.Controllers
         public ActionResult Index()
         {
             var values = db.Partners.ToList();
-            return View();
+            return View(values);
         }
         public ActionResult DeletePartners(int id)
         {
