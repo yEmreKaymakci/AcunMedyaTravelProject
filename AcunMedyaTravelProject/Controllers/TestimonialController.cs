@@ -37,7 +37,7 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Testimonials(int id)
+        public ActionResult UpdateTestimonials(int id)
         {
             var values = db.Testimonials.Find(id);
             return View(values);

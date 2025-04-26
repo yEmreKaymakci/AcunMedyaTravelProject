@@ -1,4 +1,5 @@
 ﻿@model List<AcunMedyaTravelProject.Entities.Destination>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -27,8 +28,8 @@
 
                 <tr>
                     <td>@item.DestinationID </td>
-                    <td>@item.ImageUrl</td>
-                    <td>@item.Title</td>
+                    <td><img src="@item.ImageUrl" style="width:80px;height:80px" /></td>
+                    <td>@item.Title </td>
                     <td> <div class="cell-content">@item.Description1</div></td>
                     <td>@item.Description2</td>
                     <td> <a href="/Destination/UpdateDestinations/@item.DestinationID" class="btn btn-danger">Güncelle</a></td>

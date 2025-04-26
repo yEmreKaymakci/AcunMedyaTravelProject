@@ -37,7 +37,7 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Sliders(int id)
+        public ActionResult UpdateSliders(int id)
         {
             var values = db.Sliders.Find(id);
             return View(values);

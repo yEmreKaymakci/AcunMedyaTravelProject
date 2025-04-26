@@ -1,0 +1,48 @@
+﻿@model AcunMedyaTravelProject.Entities.Tour
+@{
+    ViewBag.Title = "UpdateTour";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="modern-title">Tur Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.TourID)
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title)
+    <br />
+
+
+    <label>Açıklama1</label>
+    @Html.TextBoxFor(x => x.Description1)
+    <br />
+
+    <label>Açıklama2</label>
+    @Html.TextBoxFor(x => x.Description2)
+    <br />
+
+    <label>Resim Linki</label>
+    @Html.TextBoxFor(x => x.ImageUrl)
+    <br />
+
+    <label>İkon1</label>
+    @Html.TextBoxFor(x => x.Icon1)
+    <br />
+
+    <label>İkon2</label>
+    @Html.TextBoxFor(x => x.Icon2)
+    <br />
+
+    <label>İkon3</label>
+    @Html.TextBoxFor(x => x.Icon3)
+    <br />
+
+    <label>Like</label>
+    @Html.TextBoxFor(x => x.Like)
+    <br />
+
+    <button>Güncelle</button>
+
+</form>

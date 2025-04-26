@@ -1088,6 +1088,20 @@
     <Content Include="Views\Slider\Index.cshtml" />
     <Content Include="Views\Testimonial\Index.cshtml" />
     <Content Include="Views\Tour\Index.cshtml" />
+    <Content Include="Views\Destination\CreateDestinations.cshtml" />
+    <Content Include="Views\Destination\UpdateDestinations.cshtml" />
+    <Content Include="Views\Guide\CreateGuides.cshtml" />
+    <Content Include="Views\Guide\UpdateGuides.cshtml" />
+    <Content Include="Views\Partner\CreatePartners.cshtml" />
+    <Content Include="Views\Partner\UpdatePartners.cshtml" />
+    <Content Include="Views\Service\CreateServices.cshtml" />
+    <Content Include="Views\Service\UpdateServices.cshtml" />
+    <Content Include="Views\Slider\CreateSliders.cshtml" />
+    <Content Include="Views\Slider\UpdateSliders.cshtml" />
+    <Content Include="Views\Testimonial\CreateTestimonials.cshtml" />
+    <Content Include="Views\Testimonial\UpdateTestimonials.cshtml" />
+    <Content Include="Views\Tour\CreateTours.cshtml" />
+    <Content Include="Views\Tour\UpdateTours.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

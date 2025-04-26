@@ -37,7 +37,7 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Partners(int id)
+        public ActionResult UpdatePartners(int id)
         {
             var values = db.Partners.Find(id);
             return View(values);

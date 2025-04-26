@@ -1,0 +1,33 @@
+﻿@model AcunMedyaTravelProject.Entities.Guide
+@{
+    ViewBag.Title = "UpdateGuide";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="modern-title">Rehber Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.GuideID)
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title)
+    <br />
+
+
+    <label>Açıklama1</label>
+    @Html.TextBoxFor(x => x.Description1)
+    <br />
+
+    <label>Açıklama2</label>
+    @Html.TextBoxFor(x => x.Description2)
+    <br />
+
+    <label>Resim Linki</label>
+    @Html.TextBoxFor(x => x.ImageUrl)
+    <br />
+
+
+    <button>Güncelle</button>
+
+</form>

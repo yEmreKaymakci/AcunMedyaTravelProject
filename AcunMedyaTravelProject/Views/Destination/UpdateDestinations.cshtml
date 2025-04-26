@@ -1,0 +1,32 @@
+﻿@model AcunMedyaTravelProject.Entities.Destination
+@{
+    ViewBag.Title = "UpdateDestination";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="modern-title">Konumlar Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.DestinationID)
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x=>x.Title)
+    <br />
+
+    <label>Resim Linki</label>
+    @Html.TextBoxFor(x => x.ImageUrl)
+    <br />
+
+    <label>Açıklama1</label>
+    @Html.TextBoxFor(x => x.Description1)
+    <br />
+
+    <label>Açıklama1</label>
+    @Html.TextBoxFor(x => x.Description2)
+    <br />
+
+
+    <button>Güncelle</button>
+
+</form>

@@ -1,0 +1,19 @@
+﻿@model AcunMedyaTravelProject.Entities.Partner
+@{
+    ViewBag.Title = "UpdatePartners";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="modern-title">Sponsor Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.PartnerID)
+
+    <label>Resim Linki</label>
+    @Html.TextBoxFor(x => x.ImageUrl)
+    <br />
+
+    <button>Güncelle</button>
+
+</form>

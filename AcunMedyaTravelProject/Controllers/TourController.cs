@@ -18,7 +18,7 @@ namespace AcunMedyaTravelProject.Controllers
             var values = db.Tours.ToList();
             return View(values);
         }
-        public ActionResult DeleteGuides(int id)
+        public ActionResult DeleteTours(int id)
         {
             var values = db.Tours.Find(id);
             db.Tours.Remove(values);
@@ -37,7 +37,7 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Tours(int id)
+        public ActionResult UpdateTours(int id)
         {
             var values = db.Tours.Find(id);
             return View(values);

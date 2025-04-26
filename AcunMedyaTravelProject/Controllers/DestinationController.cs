@@ -32,7 +32,6 @@ namespace AcunMedyaTravelProject.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult CreateDestinations(Destination destination)
         {
@@ -40,7 +39,7 @@ namespace AcunMedyaTravelProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult CreateDestinations(int id)
+        public ActionResult UpdateDestinations(int id)
         {
             var values = db.Destinations.Find(id);
             return View(values);
