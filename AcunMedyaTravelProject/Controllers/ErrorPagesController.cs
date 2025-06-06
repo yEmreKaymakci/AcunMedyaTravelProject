@@ -6,11 +6,13 @@ using System.Web.Mvc;
 
 namespace AcunMedyaTravelProject.Controllers
 {
-    public class CategoriesController : Controller
+    public class ErrorPagesController : Controller
     {
-        // GET: Categories
+        // GET: ErrorPages
         public ActionResult Index()
         {
+            Response.StatusCode = 404;
+            Response.TrySkipIisCustomErrors = true;
             return View();
         }
     }

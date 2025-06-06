@@ -133,22 +133,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\AcunmedyaDbContext.cs" />
-    <Compile Include="Controllers\AcunMedyaDbContext.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\AdvertController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\DestinationController.cs" />
+    <Compile Include="Controllers\ErrorPagesController.cs" />
     <Compile Include="Controllers\GuideController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Entities\Admin.cs" />
+    <Compile Include="Entities\Booking.cs" />
+    <Compile Include="Entities\Booking2.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Destination.cs" />
     <Compile Include="Entities\Guide.cs" />
+    <Compile Include="Entities\Mail.cs" />
     <Compile Include="Entities\Partner.cs" />
     <Compile Include="Entities\Services.cs" />
     <Compile Include="Entities\Slider.cs" />
@@ -197,6 +205,26 @@
     <Compile Include="Migrations\202504232351109_guide.Designer.cs">
       <DependentUpon>202504232351109_guide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504272050598_category.cs" />
+    <Compile Include="Migrations\202504272050598_category.Designer.cs">
+      <DependentUpon>202504272050598_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505071526253_mig_diyagram.cs" />
+    <Compile Include="Migrations\202505071526253_mig_diyagram.Designer.cs">
+      <DependentUpon>202505071526253_mig_diyagram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506012100076_book.cs" />
+    <Compile Include="Migrations\202506012100076_book.Designer.cs">
+      <DependentUpon>202506012100076_book.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506012126230_DeletebookingsTable.cs" />
+    <Compile Include="Migrations\202506012126230_DeletebookingsTable.Designer.cs">
+      <DependentUpon>202506012126230_DeletebookingsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506012129287_AddingbookingsTable.cs" />
+    <Compile Include="Migrations\202506012129287_AddingbookingsTable.Designer.cs">
+      <DependentUpon>202506012129287_AddingbookingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -217,6 +245,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="CSS\admin-components.css" />
+    <Content Include="CSS\admin-modern.css" />
+    <Content Include="CSS\admin-responsive.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -882,12 +913,6 @@
     <Content Include="regal-1.0.0\vendors\select2\select2.min.css" />
     <Content Include="regal-1.0.0\vendors\select2\select2.min.js" />
     <Content Include="regal-1.0.0\vendors\typeahead.js\typeahead.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jadoo\.babelrc" />
     <Content Include="jadoo\.eslintrc" />
     <Content Include="jadoo\.gitignore" />
@@ -1050,6 +1075,34 @@
     <Content Include="regal-1.0.0\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="regal-1.0.0\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="regal-1.0.0\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -1102,37 +1155,43 @@
     <Content Include="Views\Testimonial\UpdateTestimonials.cshtml" />
     <Content Include="Views\Tour\CreateTours.cshtml" />
     <Content Include="Views\Tour\UpdateTours.cshtml" />
+    <Content Include="Views\Statistic\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\UpdateCategories.cshtml" />
+    <Content Include="Views\Category\CreateCategories.cshtml" />
+    <Content Include="Views\ErrorPages\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\PartialHead.cshtml" />
+    <Content Include="Views\Default\PartialTurlar.cshtml" />
+    <Content Include="Views\Service\SearchServices.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Booking\AddBooking.cshtml" />
+    <Content Include="Views\Default\PartialBooking.cshtml" />
+    <Content Include="Views\Default\PartialBooking2.cshtml" />
+    <Content Include="Views\Default\PartialNavbar.cshtml" />
+    <Content Include="Views\Default\PartialScript.cshtml" />
+    <Content Include="Views\Default\PartialSlider.cshtml" />
+    <Content Include="Views\Default\PartialService.cshtml" />
+    <Content Include="Views\Default\PartialDestinations.cshtml" />
+    <Content Include="Views\Default\PartialTestimonial.cshtml" />
+    <Content Include="Views\Default\PartialSponsor.cshtml" />
+    <Content Include="Views\Default\PartialFooter.cshtml" />
+    <Content Include="Views\Default\PartialCopyright.cshtml" />
+    <Content Include="Views\Default\PartialContact.cshtml" />
+    <Content Include="Views\Advert\Index.cshtml" />
+    <Content Include="Views\Advert\AddAdvert.cshtml" />
+    <Content Include="Views\Advert\UpdateAdvert.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\Mail\SearchMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Categories\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
@@ -1166,6 +1225,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504232351109_guide.resx">
       <DependentUpon>202504232351109_guide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504272050598_category.resx">
+      <DependentUpon>202504272050598_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505071526253_mig_diyagram.resx">
+      <DependentUpon>202505071526253_mig_diyagram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506012100076_book.resx">
+      <DependentUpon>202506012100076_book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506012126230_DeletebookingsTable.resx">
+      <DependentUpon>202506012126230_DeletebookingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506012129287_AddingbookingsTable.resx">
+      <DependentUpon>202506012129287_AddingbookingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

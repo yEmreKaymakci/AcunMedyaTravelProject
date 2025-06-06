@@ -9,7 +9,7 @@ namespace AcunMedyaTravelProject.Entities
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
-        public string test { get; set; }
-
+        public List<Destination> Destinations { get; set; }
     }
+        
 }

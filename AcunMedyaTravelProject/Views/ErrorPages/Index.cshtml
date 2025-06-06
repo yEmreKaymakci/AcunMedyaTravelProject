@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfa Bulunamadı</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1e1e2f;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .number {
+            font-size: 10rem;
+            font-weight: bold;
+            color: #ff4c60;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .message {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #ff4c60;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff1f3d;
+        }
+
+        @@keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @@keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="number">404</div>
+        <div class="message">Aradığın sayfa bulunamadı!</div>
+        <a href="/Service/" class="button">Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

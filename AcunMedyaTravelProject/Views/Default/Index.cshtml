@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+    @Html.Action("PartialHead", "Default")
+
+
+    
+<body>
+
+    <main class="main" id="top">
+        @Html.Action("PartialNavbar", "Default")
+        @Html.Action("PartialSlider", "Default")
+        @Html.Action("PartialService", "Default")
+        @Html.Action("PartialDestinations", "Default")+
+        <section id="booking">
+
+            <div class="container">
+                <div class="row align-items-center">
+                    @Html.Action("PartialBooking", "Default")
+                    @Html.Action("PartialBooking2", "Default")
+                </div>
+            </div>
+
+        </section>
+        @Html.Action("PartialTestimonial", "Default")
+
+        @Html.Action("PartialSponsor", "Default")
+
+        @Html.Action("PartialContact", "Default")
+
+        @Html.Action("PartialFooter", "Default")
+
+        @Html.Action("PartialCopyright", "Default")
+
+
+    </main>
+    @Html.Action("PartialScript", "Default")
+</body>
+
+</html>

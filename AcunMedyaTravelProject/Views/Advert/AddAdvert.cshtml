@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "AddAdvert";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+<div class="container py-5">
+    <div class="card shadow rounded-4">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Yeni Tanıtım Ekle</h2>
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Başlık</label>
+                    <input type="text" class="form-control" id="Title" name="Title" placeholder="Tanıtım başlığını girin">
+                </div>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Seyahat Süresi</label>
+                    <textarea class="form-control" id="Description" name="Date" placeholder="Seyahat süresini yazın"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Açıklama</label>
+                    <textarea class="form-control" id="Description" name="Description" placeholder="Seyahat ücretini yazın"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ImageUrl" class="form-label">Resim URL</label>
+                    <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" placeholder="Resim bağlantısını girin">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

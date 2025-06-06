@@ -1,0 +1,43 @@
+﻿@model List<AcunMedyaTravelProject.Entities.Booking2>
+@{
+    ViewBag.Title = "UpdateAdvert";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>UpdateAdvert</h2>
+
+<div class="container py-5">
+    <div class="card shadow rounded-4">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Reklamı Güncelle</h2>
+
+            <form method="post">
+                @Html.HiddenFor(a => a.Booking2ID)
+
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Başlık</label>
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tanıtım başlığını güncelleyin" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="Date" class="form-label">Seyahat Süresi</label>
+                    @Html.TextAreaFor(x => x.Date, new { @class = "form-control", @placeholder = "Seyahat süresini güncelleyin" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Açıklama</label>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "3", @placeholder = "Seyahat ücretini güncelleyin" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="ImageUrl" class="form-label">Resim URL</label>
+                    @Html.TextAreaFor(x => x.ImageUrl, new { @class = "form-control", @rows = "3", @placeholder = "Resim bağlantısını girin" })
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

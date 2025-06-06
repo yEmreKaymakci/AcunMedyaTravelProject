@@ -1,0 +1,21 @@
+﻿
+@model AcunMedyaTravelProject.Entities.Category
+@{
+    ViewBag.Title = "UpdateCategories";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2 class="modern-title">Kategori Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.CategoryID)
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.CategoryName)
+    <br />
+
+
+    <button>Güncelle</button>
+
+</form>

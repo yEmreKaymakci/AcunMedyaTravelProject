@@ -1,0 +1,1039 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper" style="background-color: #f8fafc;">
+
+
+        <!-- Başlık Bölümü -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="welcome-card p-4 rounded-3 shadow-sm"
+                     style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white;">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h4 class="fw-bold mb-2">Dashboard Genel Bakış</h4>
+                            <p class="mb-0 opacity-75">Sistem verilerinizi ve performans metriklerinizi takip edin</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <div class="badge px-3 py-2"
+                                 style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); font-size: 0.9rem;">
+                                <i class="bi bi-calendar3 me-2"></i>
+                                <span id="currentDate"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ana Metrik Kartları -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100 metric-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <div class="text-muted mb-1 small fw-medium">TOPLAM DESTINASYON</div>
+                                <h3 class="fw-bold text-primary mb-0 counter">@ViewBag.DestinationCount</h3>
+                                <small class="text-success"><i class="bi bi-arrow-up"></i> %8.2 artış</small>
+                            </div>
+                            <div class="metric-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100 metric-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <div class="text-muted mb-1 small fw-medium">TOPLAM HİZMET</div>
+                                <h3 class="fw-bold text-success mb-0 counter">@ViewBag.ServicesCount</h3>
+                                <small class="text-success"><i class="bi bi-arrow-up"></i> %12.5 artış</small>
+                            </div>
+                            <div class="metric-icon bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-gear-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100 metric-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <div class="text-muted mb-1 small fw-medium">MÜŞTERİ REFERANSI</div>
+                                <h3 class="fw-bold text-warning mb-0 counter">@ViewBag.TestimonialCount</h3>
+                                <small class="text-success"><i class="bi bi-arrow-up"></i> %5.3 artış</small>
+                            </div>
+                            <div class="metric-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100 metric-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <div class="text-muted mb-1 small fw-medium">KATEGORİ SAYISI</div>
+                                <h3 class="fw-bold text-info mb-0 counter">@ViewBag.CategoryCount</h3>
+                                <small class="text-success"><i class="bi bi-arrow-up"></i> %3.1 artış</small>
+                            </div>
+                            <div class="metric-icon bg-info bg-opacity-10 text-info">
+                                <i class="bi bi-tags-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ana İçerik Bölümü -->
+        <div class="row">
+            <!-- Sol Taraf - Grafikler -->
+            <div class="col-xl-8 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white border-bottom-0 py-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0 fw-bold">Son Destinasyonlar</h5>
+                            <span class="badge bg-light text-dark">@ViewBag.LastDestinations.Count aktif</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Grafik Bölümü -->
+                        <div class="row mb-4">
+                            <div class="col-md-7">
+                                <div class="chart-container" style="height: 300px;">
+                                    <canvas id="destinationChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="h-100 d-flex flex-column justify-content-center">
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <div class="text-center p-3 rounded-3 bg-light">
+                                                <h4 class="fw-bold text-primary mb-1 counter">@ViewBag.DestinationCount</h4>
+                                                <small class="text-muted">Toplam</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-center p-3 rounded-3 bg-light">
+                                                <h4 class="fw-bold text-success mb-1 counter">@ViewBag.LastDestinations.Count</h4>
+                                                <small class="text-muted">Yeni</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Destinasyon Tablosu -->
+                        <div class="table-responsive">
+                            <table class="table table-hover table-borderless">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="fw-semibold text-muted small">#</th>
+                                        <th class="fw-semibold text-muted small">DESTINASYON</th>
+                                        <th class="fw-semibold text-muted small">DURUM</th>
+                                        <th class="fw-semibold text-muted small">TARİH</th>
+                                        <th class="fw-semibold text-muted small">İŞLEM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int count = 1;
+                                        foreach (var item in ViewBag.LastDestinations)
+                                        {
+                                            <tr>
+                                                <td class="fw-semibold text-muted">@count</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar-sm bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3">
+                                                            @item.ToString().Substring(0, 1)
+                                                        </div>
+                                                        <span class="fw-medium">@item</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-success bg-opacity-10 text-success">
+                                                        <i class="bi bi-check-circle-fill me-1"></i>Aktif
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <small class="text-muted">@DateTime.Now.AddDays(-count).ToString("dd.MM.yyyy")</small>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-eye me-1"></i>Görüntüle
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf - Detay Kartları -->
+            <div class="col-xl-4">
+                <!-- Son Eklenen Referans -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-bottom-0 py-3">
+                        <h6 class="mb-0 fw-bold">Son Müşteri Referansı</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                            <div class="avatar-lg bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                @if (ViewBag.LastTestimonial != null)
+                                {
+                                    @ViewBag.LastTestimonial.ToString().Substring(0, 1)
+                                }
+                                else
+                                {
+                                    <i class="bi bi-person"></i>
+                                }
+                            </div>
+                            <div>
+                                <h6 class="mb-1 fw-semibold">@(ViewBag.LastTestimonial ?? "Bulunamadı")</h6>
+                                <small class="text-muted">Son eklenen referans</small>
+                                <div class="mt-1">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary small">Onaylandı</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-6 text-center">
+                                <div class="fw-bold text-primary counter">@ViewBag.TestimonialCount</div>
+                                <small class="text-muted">Toplam</small>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="fw-bold text-success">98%</div>
+                                <small class="text-muted">Memnuniyet</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Son Kategori -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-bottom-0 py-3">
+                        <h6 class="mb-0 fw-bold">Son Eklenen Kategori</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                            <div class="avatar-lg bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                @if (ViewBag.LastCategory != null)
+                                {
+                                    @ViewBag.LastCategory.ToString().Substring(0, 1)
+                                }
+                                else
+                                {
+                                    <i class="bi bi-tag"></i>
+                                }
+                            </div>
+                            <div>
+                                <h6 class="mb-1 fw-semibold">@(ViewBag.LastCategory ?? "Bulunamadı")</h6>
+                                <small class="text-muted">Kategori adı</small>
+                                <div class="mt-1">
+                                    <span class="badge bg-info bg-opacity-10 text-info small">Aktif</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Son Hizmet -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-bottom-0 py-3">
+                        <h6 class="mb-0 fw-bold">Son Eklenen Hizmet</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                            <div class="avatar-lg bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                @if (ViewBag.LastServices != null)
+                                {
+                                    @ViewBag.LastServices.ToString().Substring(0, 1)
+                                }
+                                else
+                                {
+                                    <i class="bi bi-gear"></i>
+                                }
+                            </div>
+                            <div>
+                                <h6 class="mb-1 fw-semibold">@(ViewBag.LastServices ?? "Bulunamadı")</h6>
+                                <small class="text-muted">Hizmet adı</small>
+                                <div class="mt-1">
+                                    <span class="badge bg-success bg-opacity-10 text-success small">Yayında</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alt Grafik Bölümü -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-bottom-0 py-3">
+                        <h5 class="mb-0 fw-bold">Genel İstatistikler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="generalStatsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .metric-card {
+        transition: all 0.3s ease;
+        border-radius: 12px !important;
+        background-color: #1f2937; /* koyu gri */
+        color: #f9fafb;
+    }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+        }
+
+    .metric-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        color: white;
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #059669 0%, #065f46 100%);
+        color: white;
+    }
+
+    .bg-gradient-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+        color: white;
+    }
+
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+        color: white;
+    }
+
+    .bg-primary-subtle {
+        background-color: #1e3a8a !important;
+        color: white !important;
+    }
+
+    .bg-light {
+        background-color: #334155 !important;
+        color: #f1f5f9;
+    }
+
+    .card-header.bg-white {
+        background-color: #1e293b !important;
+        color: #f8fafc !important;
+    }
+
+    .badge.bg-light {
+        background-color: #475569 !important;
+        color: #e2e8f0 !important;
+    }
+
+    .badge.bg-success.bg-opacity-10 {
+        background-color: rgba(16, 185, 129, 0.15) !important;
+        color: #10b981 !important;
+    }
+
+    .badge.bg-primary.bg-opacity-10 {
+        background-color: rgba(59, 130, 246, 0.15) !important;
+        color: #3b82f6 !important;
+    }
+
+    .badge.bg-info.bg-opacity-10 {
+        background-color: rgba(6, 182, 212, 0.15) !important;
+        color: #06b6d4 !important;
+    }
+
+    .badge.bg-warning.bg-opacity-10 {
+        background-color: rgba(245, 158, 11, 0.15) !important;
+        color: #f59e0b !important;
+    }
+
+    .text-muted {
+        color: #94a3b8 !important;
+    }
+
+    .table-light {
+        background-color: #1f2937 !important;
+        color: #f1f5f9 !important;
+    }
+
+    .table thead th {
+        border-bottom: 1px solid #475569;
+    }
+
+    .avatar-sm,
+    .avatar-lg {
+        background-color: #1e40af;
+        color: white;
+    }
+    /* Başlık yazılarını beyaz yap */
+    h4, h5, h6 {
+        color: white !important;
+    }
+
+    /* Kart başlıkları (card-header) koyu arka plan ve beyaz yazı */
+    .card-header {
+        background-color: #1e293b !important;
+        color: white !important;
+        border: none !important;
+    }
+
+    /* Açıklayıcı küçük yazılar için kontrast artır */
+    .card-body small,
+    .card-body .text-muted {
+        color: #cbd5e1 !important;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*    .metric-card {
+        transition: all 0.3s ease;
+        border-radius: 12px !important;
+    }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+        }
+
+    .metric-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .bg-gradient-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    }
+
+    .bg-primary-subtle {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+    }
+
+    .bg-success-subtle {
+        background-color: rgba(16, 185, 129, 0.1) !important;
+    }
+
+    .bg-info-subtle {
+        background-color: rgba(6, 182, 212, 0.1) !important;
+    }
+
+    .border-primary-subtle {
+        border-color: rgba(59, 130, 246, 0.3) !important;
+    }
+
+    .border-success-subtle {
+        border-color: rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .border-info-subtle {
+        border-color: rgba(6, 182, 212, 0.3) !important;
+    }
+
+    .text-white-50 {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .avatar-sm {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .avatar-lg {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .welcome-card {
+        border-radius: 12px !important;
+    }
+
+    .card {
+        border-radius: 12px !important;
+    }
+
+    .table th {
+        border: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .badge {
+        font-weight: 500;
+    }
+
+    .chart-container {
+        position: relative;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }*/
+</style>
+
+
+
+@*<style>
+    .metric-card {
+        transition: all 0.3s ease;
+        border-radius: 12px !important;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+    }
+
+    .metric-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    .avatar-sm {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .avatar-lg {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .welcome-card {
+        border-radius: 12px !important;
+    }
+
+    .card {
+        border-radius: 12px !important;
+    }
+
+    .table th {
+        border: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .badge {
+        font-weight: 500;
+    }
+
+    .chart-container {
+        position: relative;
+    }
+    </style>*@
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Tarih güncelleme
+    document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById("currentDate").textContent = now.toLocaleDateString('tr-TR', options);
+
+        // Sayaç animasyonu
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current);
+                }
+            }, 20);
+        });
+
+        // Destinasyon Donut Grafiği
+        const destinationCtx = document.getElementById('destinationChart');
+        if (destinationCtx) {
+            new Chart(destinationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [@Html.Raw(string.Join(",", ((List<string>)ViewBag.LastDestinations).Select(d => "'" + d + "'")))],
+                    datasets: [{
+                        data: [@for(int i = 0; i < ViewBag.LastDestinations.Count; i++){@(ViewBag.LastDestinations.Count - i)@(i < ViewBag.LastDestinations.Count - 1 ? "," : "")}],
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ].slice(0, @ViewBag.LastDestinations.Count),
+                        borderWidth: 0,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: {
+                                    size: 12,
+                                    family: 'Inter, sans-serif'
+                                }
+                            }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        }
+
+        // Genel İstatistik Çubuk Grafiği
+        const generalCtx = document.getElementById('generalStatsChart');
+        if (generalCtx) {
+            new Chart(generalCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Adminler', 'Destinasyonlar', 'Hizmetler', 'Referanslar', 'Kategoriler'],
+                    datasets: [{
+                        label: 'Toplam Sayı',
+                        data: [@ViewBag.AdminCount, @ViewBag.DestinationCount, @ViewBag.ServicesCount, @ViewBag.TestimonialCount, @ViewBag.CategoryCount],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(139, 92, 246, 0.8)'
+                        ],
+                        borderColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter, sans-serif'
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter, sans-serif'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/AdminLayout/Index.cshtml";
+    }
+    <h2>İstatistik Sayfası</h2>
+
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+
+            <div class="row mb-4">
+                <div class="col-sm-12">
+                    <div class="p-4 rounded-4 shadow-sm bg-white d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center" style="background: linear-gradient(135deg, #f8fafc, #ffffff); border-left: 5px solid #6366F1;">
+                        <div>
+                            <h4 class="fw-bold text-dark mb-1">👋 Merhaba, tekrar hoş geldiniz!</h4>
+                            <p class="text-muted mb-0">İstatistikler sayfasına hoş geldiniz.</p>
+                        </div>
+                        <div class="mt-3 mt-md-0 text-md-end">
+                            <span id="currentDate" class="badge px-4 py-3 d-inline-flex align-items-center shadow-sm"
+                                  style="background: linear-gradient(to right, #e0f7fa, #ffffff); color: #0f172a; font-weight: 600; border-radius: 1rem; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                                <i class="bi bi-calendar-event me-2 text-primary" style="font-size: 1.2rem;"></i>
+                                <strong></strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-xl-3 d-flex flex-column grid-margin stretch-card">
+                    <div class="card border-0 shadow-lg rounded-4 mb-3" style="background: linear-gradient(135deg, #f3f4f6, #ffffff);">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h5 class="card-title fw-bold text-primary mb-1">👤 Admin Bilgisi</h5>
+                                    <p class="mb-0 text-muted">Toplam admin sayısı</p>
+                                </div>
+                                <div class="icon rounded-circle d-flex align-items-center justify-content-center"
+                                     style="width: 50px; height: 50px; background: linear-gradient(to right, #6366F1, #8B5CF6); color: white;">
+                                    <i class="bi bi-shield-lock-fill fs-4"></i>
+                                </div>
+                            </div>
+                            <h3 class="fw-bold text-dark mb-4">@ViewBag.AdminCount</h3>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-lg rounded-5 p-0"
+                         style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255,255,255,0.4);">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div>
+                                    <h5 class="card-title fw-bold text-success mb-2">🛠 Hizmet Bilgisi</h5>
+                                    <p class="text-muted mb-0 small">Toplam hizmet sayısı</p>
+                                </div>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center shadow"
+                                     style="width: 56px; height: 56px; background: linear-gradient(145deg, #34d399, #10b981); color: white;">
+                                    <i class="bi bi-gear-fill fs-4"></i>
+                                </div>
+                            </div>
+                            <h2 class="fw-bold text-dark mb-4">@ViewBag.ServicesCount</h2>
+
+                            <div class="alert alert-success d-flex align-items-center justify-content-between rounded-4 mt-4 mb-0 shadow-sm"
+                                 style="background: linear-gradient(120deg, #d1fae5, #a7f3d0);">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-stars fs-4 text-success me-3"></i>
+                                    <div>
+                                        <div class="fw-semibold text-dark">Son Eklenen Hizmet</div>
+                                        <div class="fw-bold fs-5 text-success">@ViewBag.LastServices</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9 d-flex grid-margin stretch-card">
+                    <div class="card w-100">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">Son Eklenen 3 Konum</h4>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <p class="text-muted">En son eklenen konumları keşfedin ve yeni seyahat noktalarını inceleyin.</p>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="chart-legends d-lg-block d-none" id="destination-legends">
+                                            <span class="me-3"><i class="bi bi-circle-fill text-primary me-1"></i> Yeni Eklenenler</span>
+                                            <span><i class="bi bi-circle-fill text-success me-1"></i> Popüler</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Konumlar</th>
+                                                    <th scope="col">Durum</th>
+                                                    <th scope="col">İşlem</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    int count = 1;
+                                                    foreach (var item in ViewBag.LastDestinations)
+                                                    {
+                                                        <tr>
+                                                            <th scope="row">@count</th>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <span class="fw-medium">@item</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-gradient bg-success text-white rounded-pill px-3 py-2" style="font-size: 0.8rem; font-weight: 500;">Yeni</span>
+                                                            </td>
+                                                            <td>
+                                                                <a href="/Destinations" class="btn btn-outline-indigo btn-sm rounded-pill"
+                                                                   style="background: linear-gradient(to right, #6366F1, #8B5CF6); color: white; border: none;">
+                                                                    Detaylar
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        count++;
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card w-100 border-0 shadow-lg rounded-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-4 text-success">🚀 İlk Eklenen Konumlar</h5>
+
+                            @if (ViewBag.FirstDestinations != null)
+                            {
+                                var index = 1;
+                                foreach (var dest in ((List<string>)ViewBag.FirstDestinations).Take(3))
+                                {
+                                    <div class="d-flex align-items-center justify-content-between bg-light rounded-3 px-3 py-3 mb-3" style="box-shadow: 0 3px 6px rgba(0,0,0,0.03);">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; font-weight: 600;">
+                                                @index
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">@dest</div>
+                                                <small class="text-muted">Yeni konum</small>
+                                            </div>
+                                        </div>
+                                        <a href="/Destination/" class="btn btn-sm text-white rounded-pill px-3" style="background: linear-gradient(to right, #34d399, #10b981); font-size: 0.75rem;">
+                                            İncele
+                                        </a>
+                                    </div>
+                                    index++;
+                                }
+                            }
+                            else
+                            {
+                                <p class="text-muted">Henüz konum eklenmemiş.</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 d-flex grid-margin stretch-card">
+                            <div class="card w-100 border-0 shadow-lg rounded-4">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title fw-bold mb-4 text-primary">🎯 Son Eklenen Referans</h5>
+
+                                    <div class="d-flex align-items-center p-3 rounded-4 bg-light position-relative" style="background: linear-gradient(135deg, #f0f4ff, #ffffff); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+                                        <div class="me-3 flex-shrink-0">
+                                            <div class="rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px; background: linear-gradient(to right, #6366F1, #8B5CF6); color: white; font-size: 1.5rem; font-weight: 600;">
+                                                @if (ViewBag.LastTestimonial != null && !string.IsNullOrEmpty(ViewBag.LastTestimonial.ToString()))
+                                                {
+                                                    @ViewBag.LastTestimonial.ToString().Substring(0, 1)
+                                                }
+                                                else
+                                                {
+                                                    <i class="bi bi-person"></i>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-semibold text-dark">@((ViewBag.LastTestimonial ?? "İsim Bulunamadı").ToString())</h6>
+                                            <span class="badge bg-gradient text-white" style="background: linear-gradient(to right, #6366F1, #8B5CF6);">
+                                                <i class="bi bi-award me-1"></i> Referans
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 text-end">
+                                        <span class="text-muted">
+                                            <i class="bi bi-people-fill me-1"></i>
+                                            Toplam Referans: <strong>@ViewBag.TestimonialCount</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex grid-margin stretch-card">
+                            <div class="card w-100 border-0 shadow rounded-3" style="transition: all 0.3s ease;">
+                                <div class="card-body p-4 bg-white">
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+                                        <h5 class="card-title fw-semibold text-dark mb-0">
+                                            📁 Son Eklenen Kategori
+                                        </h5>
+                                    </div>
+
+                                    <div class="d-flex align-items-center p-3 bg-light rounded-3 border shadow-sm"
+                                         style="transition: all 0.3s ease; background-color: #f9fafb;">
+                                        <div class="me-3">
+                                            <div class="rounded-3 d-flex align-items-center justify-content-center"
+                                                 style="width: 55px; height: 55px; background-color: #e0e7ff; color: #4338ca; font-weight: bold; font-size: 1.4rem;">
+                                                @if (ViewBag.LastCategory != null && !string.IsNullOrEmpty(ViewBag.LastCategory.ToString()))
+                                                {
+                                                    @ViewBag.LastCategory.ToString().Substring(0, 1)
+                                                }
+                                                else
+                                                {
+                                                    <i class="bi bi-folder2-open"></i>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-semibold text-dark">@((ViewBag.LastCategory ?? "İsim Bulunamadı").ToString())</h6>
+                                            <small class="text-muted"><i class="bi bi-tag me-1"></i> Kategori</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 text-end">
+                                        <span class="text-dark fw-semibold">
+                                            <i class="bi bi-layers me-1"></i>
+                                            Toplam Kategori: <strong class="text-primary">@ViewBag.CategoryCount</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const now = new Date();
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById("currentDate").querySelector("strong").textContent =
+            now.toLocaleDateString('tr-TR', options);
+    </script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            width: 122%; /* Tüm genişliği kaplar */
+            min-height: 100vh; /*Tüm ekran yüksekliğini kaplar */
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box; /* Padding eklenince taşmayı önler */
+        }
+    </style>*@

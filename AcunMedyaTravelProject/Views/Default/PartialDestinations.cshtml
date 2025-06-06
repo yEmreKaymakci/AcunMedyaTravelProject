@@ -1,0 +1,79 @@
+﻿@model List<AcunMedyaTravelProject.Entities.Destination>
+
+<section class="pt-5" id="destination">
+
+    <div class="container">
+        <div class="position-absolute start-100 bottom-0 translate-middle-x d-none d-xl-block ms-xl-n4"><img src="~/jadoo/public/assets/img/dest/shape.svg" alt="destination" /></div>
+        <div class="mb-7 text-center">
+            <h5 class="text-secondary">En Çok Tercih Edilen </h5>
+            <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Öne Çıkan Seyehat Planları</h3>
+        </div>
+
+        <div class="mt-3 text-center mb-5">
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-category="0">
+                Hepsi
+            </button>
+            <button class="btn btn-outline-primary me-2 filter-btn" data-category="2">
+                Avrupa
+            </button>
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-category="1">
+                Asya
+            </button>
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-category="8">
+                Amerika
+            </button>
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-category="3">
+                Gemi Turları
+            </button>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4 destination-card" data-category="@item.CategoryID">
+                    <div class="card overflow-hidden shadow">
+                        <img class="card-img-top" src="@item.ImageUrl" alt="@item.Title" />
+                        <div class="card-body py-4 px-3">
+                            <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
+                                <h4 class="text-secondary fw-medium"><a class="link-900 text-decoration-none stretched-link" href="#!">@item.Title</a></h4><span class="fs-1 fw-medium">@item.Description1</span>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="~/jadoo/public/assets/img/dest/navigation.svg" style="margin-right: 14px" width="20" alt="navigation" /><span class="fs-0 fw-medium">@item.Description2</span></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const destinationCards = document.querySelectorAll('.destination-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+                destinationCards.forEach(card => {
+                    if (category === "0" || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<style>
+    .filter-btn {
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 123, 255, 0.1);
+    }
+</style>

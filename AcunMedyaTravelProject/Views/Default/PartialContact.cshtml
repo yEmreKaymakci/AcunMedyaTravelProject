@@ -1,0 +1,189 @@
+﻿@model AcunMedyaTravelProject.Entities.Mail
+
+<section class="pt-6">
+    <div class="container">
+        <div class="py-8 px-5 position-relative text-center" style="background-color: rgba(223, 215, 249, 0.199);border-radius: 129px 20px 20px 20px;">
+            <div class="position-absolute start-100 top-0 translate-middle ms-md-n3 ms-n4 mt-3">
+                <img src="~/jadoo/public/assets/img/cta/send.png" style="max-width:70px;" alt="send icon" />
+            </div>
+            <div class="position-absolute end-0 top-0 z-index--1">
+                <img src="~/jadoo/public/assets/img/cta/shape-bg2.png" width="264" alt="cta shape" />
+            </div>
+            <div class="position-absolute start-0 bottom-0 ms-3 z-index--1 d-none d-sm-block">
+                <img src="~/jadoo/public/assets/img/cta/shape-bg1.png" style="max-width: 340px;" alt="cta shape" />
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <h2 class="text-secondary lh-1-7 mb-7">
+                        Bilgilendirici içerikler, güncel haberler ve özel fırsatlardan haberdar olmak için abone olun
+                    </h2>
+
+                    <form class="row g-3 align-items-center w-lg-75 mx-auto" id="subscribeForm">
+                        <div class="col-sm">
+                            <div class="input-group-icon">
+                                <input class="form-control form-little-squirrel-control" type="email" name="Email" placeholder="E-posta adresinizi girin" required />
+                                <img class="input-box-icon" src="~/jadoo/public/assets/img/cta/mail.svg" width="17" alt="mail" />
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <button type="submit" class="btn btn-danger orange-gradient-btn fs--1">Abone Ol</button>
+                        </div>
+                    </form>
+
+                    <div id="contactResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $('#subscribeForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '@Url.Action("SubmitContactForm", "Default")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    Swal.fire({
+                        icon: response.success ? 'success' : 'error',
+                        title: response.success ? 'Abone oldunuz' : 'Hata oluştu',
+                        text: response.message,
+                        timer: 5000,
+                        showConfirmButton: false
+                    });
+
+                    if (response.success) {
+                        $('#subscribeForm')[0].reset(); // formu sıfırla
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata oluştu',
+                        text: 'Sunucuya bağlanırken bir hata meydana geldi.'
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<section class="pt-6">
+        <div class="container">
+            <div class="py-8 px-5 position-relative text-center" style="background-color: rgba(223, 215, 249, 0.199);border-radius: 129px 20px 20px 20px;">
+                <div class="position-absolute start-100 top-0 translate-middle ms-md-n3 ms-n4 mt-3"> <img src="~/jadoo/public/assets/img/cta/send.png" style="max-width:70px;" alt="send icon" /></div>
+                <div class="position-absolute end-0 top-0 z-index--1"> <img src="~/jadoo/public/assets/img/cta/shape-bg2.png" width="264" alt="cta shape" /></div>
+                <div class="position-absolute start-0 bottom-0 ms-3 z-index--1 d-none d-sm-block"> <img src="~/jadoo/public/assets/img/cta/shape-bg1.png" style="max-width: 340px;" alt="cta shape" /></div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <h2 class="text-secondary lh-1-7 mb-7">Bilgilendirici içerikler, güncel haberler ve özel fırsatlardan haberdar olmak için abone olun</h2>
+                        <form class="row g-3 align-items-center w-lg-75 mx-auto" id="subsriceForm">
+                            <div class="col-sm">
+                                <div class="input-group-icon">
+                                    <input class="form-control form-little-squirrel-control" type="email" placeholder="E-posta adresinizi girin " aria-label="email" name="MailName" required /><img class="input-box-icon" src="~/jadoo/public/assets/img/cta/mail.svg" width="17" alt="mail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-auto">
+                                <button type="submit" class="btn btn-danger orange-gradient-btn fs--1">Abone Ol</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <section class="pt-6">
+        <div class="container">
+            <div class="py-8 px-5 position-relative text-center" style="background-color: rgba(223, 215, 249, 0.199);border-radius: 129px 20px 20px 20px;">
+                <div class="position-absolute start-100 top-0 translate-middle ms-md-n3 ms-n4 mt-3"> <img src="~/jadoo/public/assets/img/cta/send.png" style="max-width:70px;" alt="send icon" /></div>
+                <div class="position-absolute end-0 top-0 z-index--1"> <img src="~/jadoo/public/assets/img/cta/shape-bg2.png" width="264" alt="cta shape" /></div>
+                <div class="position-absolute start-0 bottom-0 ms-3 z-index--1 d-none d-sm-block"> <img src="~/jadoo/public/assets/img/cta/shape-bg1.png" style="max-width: 340px;" alt="cta shape" /></div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <h2 class="text-secondary lh-1-7 mb-7">Bilgilendirici içerikler, güncel haberler ve özel fırsatlardan haberdar olmak için abone olun</h2>
+                        <form class="row g-3 align-items-center w-lg-75 mx-auto" id="subsriceForm">
+                            <div class="col-sm">
+                                <div class="input-group-icon">
+                                    <input class="form-control form-little-squirrel-control" type="email" placeholder="E-posta adresinizi girin " aria-label="email" name="MailName" required /><img class="input-box-icon" src="~/jadoo/public/assets/img/cta/mail.svg" width="17" alt="mail" />
+                                </div>
+                            </div>
+                            <div class="col-sm-auto">
+                                <button type="submit" class="btn btn-danger orange-gradient-btn fs--1">Abone Ol</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $('#subsriceForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.post('@Url.Action("PartialContact", "Default")', $(this).serialize(), function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Abone oldunuz',
+                    text: response.message,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+
+                setTimeout(() => location.reload(), 5000);
+            });
+        });
+        $.ajax({
+            url: '/Default/SubmitContactForm',
+            type: 'POST',
+            data: $('#yourFormId').serialize(),
+            success: function (res) {
+                alert(res.message);
+            }
+        });
+    </script>*@
+
+
+

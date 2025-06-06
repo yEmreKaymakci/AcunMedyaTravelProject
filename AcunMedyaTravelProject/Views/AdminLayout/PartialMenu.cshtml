@@ -1,7 +1,7 @@
 ﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="user-profile">
         <div class="user-image">
-            <img src="images/faces/face28.png">
+            <img src="~/regal-1.0.0/images/faces/face3.jpg">
         </div>
         <div class="user-name">
             Yunus Emre Kaymakcı
@@ -12,7 +12,7 @@
     </div>
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="//"> <i class="icon-box menu-icon"></i><span class="menu-title">İstatistik</span></a>
+            <a class="nav-link" href="/Statistic/"> <i class="icon-box menu-icon"></i><span class="menu-title">İstatistik</span></a>
         </li>
 
         <li class="nav-item">
@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/Slider/"> <i class="icon-box menu-icon"></i><span class="menu-title">Slider</span></a>
+            <a class="nav-link" href="/Slider/"> <i class="icon-box menu-icon"></i><span class="menu-title">Anasayfa</span></a>
         </li>
 
         <li class="nav-item">
@@ -45,12 +45,18 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/Categories/"> <i class="icon-box menu-icon"></i><span class="menu-title">Kategoriler</span></a>
+            <a class="nav-link" href="/Category/"> <i class="icon-box menu-icon"></i><span class="menu-title">Kategoriler</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="/Mail/"> <i class="icon-mail menu-icon"></i><span class="menu-title">Abonelikler</span> </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "Advert")"><i class="icon-speech-bubble menu-icon"></i><span class="menu-title">Reklam</span></a>
+        </li>
 
-
-
-
+        <li class="nav-item">
+            <a class="nav-link" href="/Default/"><i class="icon-globe menu-icon"></i><span class="menu-title">Siteye Git</span> </a>
+        </li>
     </ul>
 </nav>

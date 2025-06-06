@@ -15,8 +15,9 @@
                 <th>DestinationID</th>
                 <th>Resim Linki</th>
                 <th>Başlık</th>
-                <th>Açıklama1</th>
-                <th>Açıklama2</th>
+                <th>Fiyat</th>
+                <th>Süre</th>
+                <th>CategoryID</th>
                 <th>Güncelle</th>
                 <th>Sil</th>
             </tr>
@@ -32,6 +33,7 @@
                     <td>@item.Title </td>
                     <td> <div class="cell-content">@item.Description1</div></td>
                     <td>@item.Description2</td>
+                    <td>@item.CategoryID</td>
                     <td> <a href="/Destination/UpdateDestinations/@item.DestinationID" class="btn btn-danger">Güncelle</a></td>
                     <td><a href="/Destination/DeleteDestinations/@item.DestinationID" class="btn btn-dark">Sil</a></td>
 

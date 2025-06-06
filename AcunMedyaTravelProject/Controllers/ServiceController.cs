@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.Services.Description;
 using AcunMedyaTravelProject.Context;
 using AcunMedyaTravelProject.Entities;
 
@@ -60,6 +61,11 @@ namespace AcunMedyaTravelProject.Controllers
             FormsAuthentication.SignOut();
             Session.Abandon();
             return View();
+        }
+        public ActionResult SearchServices(string searchText)
+        {
+            var result = string.IsNullOrEmpty(searchText) ? new List<Services>() : db.Services.Where(x => x.Title.Contains(searchText) || x.Description.Contains(searchText)).ToList();
+            return View(result);
         }
     }
 }

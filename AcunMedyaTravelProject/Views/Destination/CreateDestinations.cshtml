@@ -8,20 +8,25 @@
 
 <form method="post">
     <label>Resim Linki</label>
-    <input type="text" class="form-control" name="ImageURL" />
+    <input type="text" class="form-control" name="ImageUrl" />
     <br />
 
     <label>Başlık</label>
     <input type="text" class="form-control" name="Title" />
     <br />
 
-    <label>Açıklama1 </label>
+    <label>Konum fiyatını yazın </label>
     <input type="text" class="form-control" name="Description1" />
     <br />
 
-    <label>Açıklama2 </label>
+    <label>Konum süresini yazın </label>
     <input type="text" class="form-control" name="Description2" />
     <br />
+
+    <div class="mb-3">
+        <label for="Description" class="form-label">CategoryID</label>
+        <textarea class="form-control" id="CategoryID" name="CategoryID" placeholder="Kategori ID yazın"></textarea>
+    </div>
 
     <button class="btn btn-success">Ekle</button>
 
